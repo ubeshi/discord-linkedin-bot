@@ -56,9 +56,9 @@ client.on('message', (message) => {
           "linkedInDistributionTarget": {}
       },
       "owner": `urn:li:organization:${process.env.LINKEDIN_ORG_ID}`,
-      "subject": `${args}`,
+      "subject": `${args.join(' ')}`,
       "text": {
-          "text": `${args} \n#ubeshi #gpt2`
+          "text": `${args.join(' ')} \n#ubeshi #gpt2`
       }
     };
     axios.post('https://api.linkedin.com/v2/shares', data, {
