@@ -61,13 +61,14 @@ client.on('message', (message) => {
           "text": `${args} \n#ubeshi #gpt2`
       }
     };
-    axios.post('https://api.linkedin.com/v2/shares', {
+    axios.post('https://api.linkedin.com/v2/shares', data, {
       headers: {
-        Authorization: `OAuth ${process.env.LINKEDIN_TOKEN}`,
-        'Content-Type': 'application/json'
+        Authorization: `Bearer ${process.env.LINKEDIN_TOKEN}`,
+        'Content-Type': 'application/json',
       },
-      data,
-    })
+    }).catch((e) => {
+      console.log(e);
+    });
   }
 });
 
