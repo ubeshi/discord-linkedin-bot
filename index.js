@@ -63,7 +63,7 @@ client.on('message', (message) => {
     };
     axios.post('https://api.linkedin.com/v2/shares', {
       headers: {
-        Authorization: process.env.LINKEDIN_TOKEN,
+        Authorization: `OAuth ${process.env.LINKEDIN_TOKEN}`,
       },
       data,
     })
