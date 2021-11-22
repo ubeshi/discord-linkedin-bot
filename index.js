@@ -1,6 +1,8 @@
 /* eslint-disable no-plusplus */
 require('dotenv').config();
+
 const Discord = require('discord.js');
+const axios = require('axios');
 
 const client = new Discord.Client();
 
@@ -39,6 +41,32 @@ client.on('message', (message) => {
       return;
     }
     message.channel.send(`arguments: ${args}`);
+  }
+
+  if (command === 'write') {
+    const data = {
+      "content": {
+          "contentEntities": [
+              {
+                  "entityLocation": "https://www.ubeshi.com"
+              }
+          ]
+      },
+      "distribution": {
+          "linkedInDistributionTarget": {}
+      },
+      "owner": `urn:li:organization:${LINKEDIN_ORG_ID}`,
+      "subject": `${args}`,
+      "text": {
+          "text": `${args} \n#ubeshi #gpt2`
+      }
+    };
+    axios.post('https://api.linkedin.com/v2/shares', {
+      headers: {
+        Authorization: process.env.LINKEDIN_TOKEN,
+      },
+      data,
+    })
   }
 });
 
