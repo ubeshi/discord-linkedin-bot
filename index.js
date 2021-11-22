@@ -64,6 +64,7 @@ client.on('message', (message) => {
     axios.post('https://api.linkedin.com/v2/shares', {
       headers: {
         Authorization: `OAuth ${process.env.LINKEDIN_TOKEN}`,
+        'Content-Type': 'application/json'
       },
       data,
     })
