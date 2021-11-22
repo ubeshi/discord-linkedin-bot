@@ -55,7 +55,7 @@ client.on('message', (message) => {
       "distribution": {
           "linkedInDistributionTarget": {}
       },
-      "owner": `urn:li:organization:${LINKEDIN_ORG_ID}`,
+      "owner": `urn:li:organization:${process.env.LINKEDIN_ORG_ID}`,
       "subject": `${args}`,
       "text": {
           "text": `${args} \n#ubeshi #gpt2`
